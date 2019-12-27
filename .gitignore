@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__
+data
+result
+logs
+output
+tmp
+*.pid
+*.log
+*.pyc
