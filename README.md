@@ -10,5 +10,12 @@ os.environ["KERAS_HOME"] = "./keras"
 
 
 例子：
-1. imdb.py：3.5节`电影评论分类：二分类问题`
+1. imdb.py     : 3.4节`电影评论分类：二分类问题`
 
+2. reuters.py  : 3.5节`新闻分类：多分类问题`
+
+3. boston.py   : 3.6节`波士顿房价预测`
+
+4. mnist.py    : 5.1节`使用CNN训练模型识别MNIST`
+
+5. image_v1.py : 5.2.1~5.2.4节，小规模图片训练

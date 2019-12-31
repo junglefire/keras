@@ -86,12 +86,12 @@ plt.xlabel('Epochs')
 plt.ylabel('Validation MAE') 
 
 ## 使用移动平均值绘图
-# smooth_mae_history = smooth_curve(average_mae_history[10:])
+smooth_mae_history = smooth_curve(average_mae_history[10:])
 
-# plt.subplot(212)
-# plt.plot(range(1, len(smooth_mae_history) + 1), smooth_mae_history) 
-# plt.xlabel('Epochs') 
-# plt.ylabel('Validation MAE(smooth curve)') 
+plt.subplot(212)
+plt.plot(range(1, len(smooth_mae_history) + 1), smooth_mae_history) 
+plt.xlabel('Epochs') 
+plt.ylabel('Validation MAE(smooth curve)') 
 plt.show()
 
 
