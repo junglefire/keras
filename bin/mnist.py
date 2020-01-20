@@ -17,6 +17,13 @@ log.basicConfig(level=log.INFO)
 log.info("set ENV `KERAS_HOME` ...")
 os.environ["KERAS_HOME"] = "./keras"
 
+## 设置GPU参数
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.3
+set_session(tf.Session(config=config))
+
 ## 加载MNIST数据集
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 

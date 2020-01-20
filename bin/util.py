@@ -4,7 +4,7 @@ import numpy as np
 import shutil
 import os
 
-## 将整数序列编码为二进制矩阵
+## 将整数序列one-hot编码为二进制矩阵
 def vectorize_sequences(sequences, dimension=10000):
 	# Create an all-zero matrix of shape (len(sequences), dimension)
 	results = np.zeros((len(sequences), dimension))
