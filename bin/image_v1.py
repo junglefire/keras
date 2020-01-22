@@ -20,6 +20,13 @@ log.basicConfig(level=log.INFO)
 log.info("set ENV `KERAS_HOME` ...")
 os.environ["KERAS_HOME"] = "./keras"
 
+## 设置GPU参数
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.5
+set_session(tf.Session(config=config)) 
+
 ## 从`https://www.kaggle.com/c/dogs-vs-cats/data`数据集提取一个小型的数据集
 # get_small_dataset("/Users/uc/Downloads/dogs-vs-cats/", "./dataset/dogs-vs-cats")
 
