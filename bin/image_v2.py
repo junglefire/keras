@@ -20,18 +20,26 @@ log.basicConfig(level=log.INFO)
 log.info("set ENV `KERAS_HOME` ...")
 os.environ["KERAS_HOME"] = "./keras"
 
+## 设置GPU参数
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.6
+set_session(tf.Session(config=config)) 
+
 ## 从`https://www.kaggle.com/c/dogs-vs-cats/data`数据集提取一个小型的数据集
 # get_small_dataset("/Users/uc/Downloads/dogs-vs-cats/", "./dataset/dogs-vs-cats")
 
 ## 加载图片并标准化
 train_datagen = ImageDataGenerator(
-	rescale=1./255,
-	rotation_range=40,
-	width_shift_range=0.2,
-	height_shift_range=0.2,
-	shear_range=0.2,
-	zoom_range=0.2,
-	horizontal_flip=True,)
+	rescale = 1./255,
+	rotation_range = 40,
+	width_shift_range = 0.2,
+	height_shift_range = 0.2,
+	shear_range = 0.2,
+	zoom_range = 0.2,
+	horizontal_flip = True,
+	fill_mode = 'nearest')
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
