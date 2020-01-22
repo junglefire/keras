@@ -18,6 +18,13 @@ log.basicConfig(level=log.INFO)
 log.info("set ENV `KERAS_HOME` ...")
 os.environ["KERAS_HOME"] = "./keras"
 
+## 设置GPU参数
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.5
+set_session(tf.Session(config=config)) 
+
 (train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=10000)
 
 log.info("train datasets size: %d" % len(train_data))

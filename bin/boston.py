@@ -18,6 +18,14 @@ log.basicConfig(level=log.INFO)
 log.info("set ENV `KERAS_HOME` ...")
 os.environ["KERAS_HOME"] = "./keras"
 
+## 设置GPU参数
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.5
+set_session(tf.Session(config=config)) 
+
+## 拆分数据集
 (train_data, train_targets), (test_data, test_targets) = boston_housing.load_data()
 
 log.info("train datasets size: %d" % len(train_data))
@@ -80,7 +88,7 @@ for i in range(k):
 average_mae_history = [np.mean([x[i] for x in all_mae_histories]) for i in range(num_epochs)]
 
 ## 绘制验证分数
-# plt.subplot(211)
+plt.subplot(211)
 plt.plot(range(1, len(average_mae_history) + 1), average_mae_history) 
 plt.xlabel('Epochs') 
 plt.ylabel('Validation MAE') 
